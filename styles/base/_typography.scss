@@ -1,0 +1,25 @@
+@use "./_variables" as *;
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: $font-md;
+  line-height: 1.5;
+  color: $text-color;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: $font-md;
+  margin-bottom: $spacing-md;
+}

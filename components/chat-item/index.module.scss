@@ -1,0 +1,19 @@
+@use '../../styles/base/variables' as *;
+
+.chat-item {
+  padding: 0.75em 1em;
+  border-radius: $border-radius;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: rgba(0, 122, 255, 0.1);
+  }
+}
+
+.chat-name {
+  font-size: 1em;
+  margin-left: 0.5em;
+}

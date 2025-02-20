@@ -1,0 +1,68 @@
+@use "sass:color";
+@use "../../styles/base/variables" as *;
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2em;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 22em;
+}
+
+.h2 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  font-size: 1em;
+  margin-bottom: 1.5em;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ok-btn,
+.cancel-btn {
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.ok-btn {
+  background: $primary-color;
+  color: white;
+}
+
+.cancel-btn {
+  background: #ccc;
+}
+
+.ok-btn:hover {
+  background: color.adjust($primary-color, $lightness: -10%);
+}
+
+.cancel-btn:hover {
+  background: color.adjust(#ccc, $lightness: -10%);
+}

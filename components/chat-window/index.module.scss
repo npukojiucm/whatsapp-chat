@@ -1,0 +1,82 @@
+.chatWindow {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f8f9fa; // ✅ Нейтральный фон вместо картинки
+  border-radius: 10px;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  font-size: 1.25em;
+  font-weight: bold;
+  background: #ffffff;
+  border-bottom: 0.0625em solid #ddd;
+  color: #333;
+  height: 75px;
+}
+
+.messageList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.message {
+  max-width: 75%;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1em;
+}
+
+.userMessage {
+  background: #007aff;
+  color: white;
+  align-self: flex-end;
+}
+
+.receivedMessage {
+  background: #e5e5ea;
+  color: black;
+  align-self: flex-start;
+}
+
+.inputArea {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+/* ✅ Растягиваем input */
+.inputField {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  font-size: 1em;
+  background: #f0f0f0;
+  color: black;
+}
+
+.sendButton {
+  margin-left: 10px;
+  padding: 12px 15px;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sendButton:hover {
+  background: #005ecb;
+}

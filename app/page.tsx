@@ -1,95 +1,71 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import React, { JSX, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import styles from './page.module.scss';
+import { getApiUrl } from '@/utils/utils';
+import { ResGetStateInstance } from '@/types/types';
+
+export default function Login(): JSX.Element {
+  const [idInstance, setIdInstance] = useState('');
+  const [apiTokenInstance, setApiTokenInstance] = useState('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+    setErrorMessage(null);
+
+    try {
+      const url = getApiUrl('getStateInstance', idInstance, apiTokenInstance);
+      const result = await fetch(url);
+
+      const response: ResGetStateInstance = await result.json();
+
+      if (response.stateInstance === 'authorized') {
+        localStorage.setItem('idInstance', idInstance);
+        localStorage.setItem('apiTokenInstance', apiTokenInstance);
+        router.push('/chats');
+      } else {
+        setErrorMessage('Инстанс не настроен');
+      }
+    } catch (error: any) {
+      if (error.message.includes('Failed to fetch')) {
+        setErrorMessage('Инстанс не существует');
+      } else {
+        setErrorMessage(error.message);
+      }
+    }
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className={styles.container}>
+      <div className={styles.loginBox}>
+        <h2 className={styles.title}>Вход</h2>
+        <form onSubmit={handleLogin}>
+          <input
+            type="text"
+            placeholder="ID Instance"
+            value={idInstance}
+            onChange={(e) => setIdInstance(e.target.value)}
+            className={styles.inputField}
+            required
+          />
+          <input
+            type="password"
+            placeholder="API Token Instance"
+            value={apiTokenInstance}
+            onChange={(e) => setApiTokenInstance(e.target.value)}
+            className={styles.inputField}
+            required
+          />
+          <button type="submit" className={styles.loginButton}>
+            Войти
+          </button>
+        </form>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+      </div>
     </div>
   );
 }

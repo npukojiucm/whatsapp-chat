@@ -1,0 +1,15 @@
+@use '../base/variables' as *;
+
+#app-root {
+  width: 80vw;
+  max-width: 75em;
+  height: 90vh;
+  min-height: 37.5em;
+  margin: 2em auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: $background-color;
+  border-radius: $border-radius;
+  box-shadow: 0 0.25em 1.25em rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
