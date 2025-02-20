@@ -1,7 +1,7 @@
 @use "sass:color";
 @use "../../styles/base/variables" as *;
 
-.modal-overlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-.modal-content {
+.modalContent {
   background: white;
   padding: 2em;
   border-radius: 0.5em;
@@ -36,13 +36,13 @@
   margin-bottom: 1.5em;
 }
 
-.modal-buttons {
+.modalButtons {
   display: flex;
   justify-content: space-between;
 }
 
-.ok-btn,
-.cancel-btn {
+.okBtn,
+.cancelBtn {
   padding: 0.75em 1.5em;
   border: none;
   border-radius: 0.5em;
@@ -50,19 +50,19 @@
   font-size: 1em;
 }
 
-.ok-btn {
+.okBtn {
   background: $primary-color;
   color: white;
 }
 
-.cancel-btn {
+.cancelBtn {
   background: #ccc;
 }
 
-.ok-btn:hover {
+.okBtn:hover {
   background: color.adjust($primary-color, $lightness: -10%);
 }
 
-.cancel-btn:hover {
+.cancelBtn:hover {
   background: color.adjust(#ccc, $lightness: -10%);
 }

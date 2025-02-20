@@ -99,7 +99,7 @@ export const ChatWindow = ({ chat }: ChatWindowProps): JSX.Element => {
             {msg.message}
           </div>
         ))}
-        <div ref={messagesEndRef} style={{ height: '1px' }} />
+        <div ref={messagesEndRef} />
       </div>
 
       <div className={styles.inputArea}>

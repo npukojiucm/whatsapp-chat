@@ -28,7 +28,17 @@ export default function ChatsPage(): JSX.Element {
         {selectedChat ? (
           <ChatWindow chat={selectedChat} />
         ) : (
-          <p className={styles.noChatSelected}>Выберите чат</p>
+          <div className={styles.noChatSelected}>
+            <p>Выберите чат или ознакомьтесь с документацией по работе с Green-API.</p>
+            <a
+              href="https://green-api.com/docs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.apiDocsLink}
+            >
+              Перейти к документации
+            </a>
+          </div>
         )}
       </div>
     </div>

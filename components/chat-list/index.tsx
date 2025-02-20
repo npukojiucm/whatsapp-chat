@@ -21,19 +21,15 @@ export const ChatList = ({ selectedChat, setSelectedChatAction }: ChatListProps)
   };
 
   return (
-    <div className={styles['chat-list']}>
-      <div className={styles['chat-list__header']}>
+    <div className={styles.chatList}>
+      <div className={styles.chatListHeader}>
         <span>Чаты</span>
-        <button
-          className={styles['add-chat-btn']}
-          title="Создать новый чат"
-          onClick={handleCreateChat}
-        >
+        <button className={styles.addChatBtn} title="Создать новый чат" onClick={handleCreateChat}>
           +
         </button>
       </div>
 
-      <div className={styles['chat-items']}>
+      <div className={styles.chatItems}>
         {chatList.map((chat: Chat) => (
           <ChatItem
             key={chat.chatId}

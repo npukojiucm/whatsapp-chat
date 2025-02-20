@@ -18,13 +18,19 @@ export const CreateChatModal = ({
   }, [isOpen]);
 
   const handleCreate = (): void => {
-    if (phone.trim() === '') {
+    let formattedPhone = phone.trim();
+
+    if (formattedPhone === '') {
       onClose();
       return;
     }
 
+    if (formattedPhone.startsWith('+')) {
+      formattedPhone = formattedPhone.slice(1);
+    }
+
     const chat: Chat = {
-      chatId: `${phone}@c.us`,
+      chatId: `${formattedPhone}@c.us`,
     };
 
     onCreate((prevChats) => [...prevChats, chat]);
@@ -39,23 +45,23 @@ export const CreateChatModal = ({
   };
 
   return isOpen ? (
-    <div className={styles['modal-overlay']}>
-      <div className={styles['modal-content']}>
-        <h2 className={styles['h2']}>Создать новый чат</h2>
+    <div className={styles.modalOverlay}>
+      <div className={styles.modalContent}>
+        <h2 className={styles.h2}>Создать новый чат</h2>
         <input
           type="tel"
-          className={styles['input']}
+          className={styles.input}
           placeholder="Введите номер телефона"
           value={phone}
           ref={inputRef}
           onChange={(e) => setPhone(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <div className={styles['modal-buttons']}>
-          <button className={styles['ok-btn']} onClick={handleCreate}>
+        <div className={styles.modalButtons}>
+          <button className={styles.okBtn} onClick={handleCreate}>
             ОК
           </button>
-          <button className={styles['cancel-btn']} onClick={onClose}>
+          <button className={styles.cancelBtn} onClick={onClose}>
             Отмена
           </button>
         </div>

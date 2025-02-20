@@ -1,8 +1,9 @@
 .chatWindow {
   display: flex;
+  width: 100%;
   flex-direction: column;
   height: 100%;
-  background: #f8f9fa; // ✅ Нейтральный фон вместо картинки
+  background: #f8f9fa;
   border-radius: 10px;
 }
 
@@ -24,9 +25,13 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 10px;
   padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
 }
+
 
 .message {
   max-width: 75%;
@@ -55,7 +60,6 @@
   border-radius: 10px;
 }
 
-/* ✅ Растягиваем input */
 .inputField {
   flex-grow: 1;
   padding: 12px;

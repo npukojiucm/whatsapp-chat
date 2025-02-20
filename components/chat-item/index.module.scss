@@ -1,6 +1,6 @@
 @use '../../styles/base/variables' as *;
 
-.chat-item {
+.chatItem {
   padding: 0.75em 1em;
   border-radius: $border-radius;
   display: flex;
@@ -13,7 +13,7 @@
   }
 }
 
-.chat-name {
+.chatName {
   font-size: 1em;
   margin-left: 0.5em;
 }
