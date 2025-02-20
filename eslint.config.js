@@ -38,6 +38,7 @@ export default [
         fetch: 'readonly',
         setInterval: 'readonly',
         clearInterval: 'readonly',
+        URL: 'readonly',
       },
     },
     plugins: {
