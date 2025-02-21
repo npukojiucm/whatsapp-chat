@@ -6,7 +6,7 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 
 export default [
   {
-    ignores: ['node_modules', 'dist', '.next', 'environment.d.ts', 'next.config.cjs'],
+    ignores: ['node_modules', 'dist', '.next', 'environment.d.ts', 'next.config.mjs'],
   },
   js.configs.recommended,
   {
